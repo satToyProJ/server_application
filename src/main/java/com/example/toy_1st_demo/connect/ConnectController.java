@@ -7,10 +7,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConnectController {
 
     @GetMapping("/demo")
-    public Test testMain() {
+    public Test nameJY() {
         System.out.println("demo 들어옴");
         Test test = new Test();
         test.setName("jun young");
+        return test;
+    }
+
+    @GetMapping("/demo2")
+    public Test nameHJ() {
+        System.out.println("demo2 들어옴");
+        Test test = new Test();
+        test.setName("hyo jin");
         return test;
     }
 

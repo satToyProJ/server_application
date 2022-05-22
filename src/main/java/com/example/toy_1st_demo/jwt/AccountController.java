@@ -14,13 +14,17 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping("/join")
-    public String reqJoin(@RequestBody AccountDto dto) {
+    public AccountDto reqJoin(@RequestBody AccountDto dto) {
+        System.out.println("controller 진입 /join");
+        System.out.println("id : " + dto.getUsername());
+        System.out.println("pw : " + dto.getPassword());
         accountService.createAccount(dto);
-        return "true";
+        return dto;
     }
 
     @GetMapping("/user")
     public String authUser(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        System.out.println("사용자 이름: " + userDetails.getUsername());
         return "user";
     }
 }
