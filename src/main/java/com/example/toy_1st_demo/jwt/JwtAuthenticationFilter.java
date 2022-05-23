@@ -29,6 +29,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             ObjectMapper om = new ObjectMapper();
             AccountDto dto = om.readValue(request.getInputStream(), AccountDto.class);
 
+            System.out.println("login :" + dto.getUsername());
+            System.out.println("login :" + dto.getPassword());
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(dto.getUsername(), dto.getPassword());
             Authentication authentication = authenticationManager.authenticate(authenticationToken);
             return authentication;
@@ -42,6 +44,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
+        System.out.println("로그인이 성공함");
         String jwtToken = JWT.create()
                 .withSubject(userDetails.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
