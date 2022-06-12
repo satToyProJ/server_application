@@ -20,7 +20,7 @@ public class SwaggerConfig {
 
     //    swagger 접속 링크
     //    http://localhost:8080/swagger-ui/index.html
-
+    //    http://54.180.113.96:8080/swagger-ui.html
     //1. controller class 에 달아주세요
     //@Api(tags = {"1. Book_책api"}) // Swagger # 1. Book
 
